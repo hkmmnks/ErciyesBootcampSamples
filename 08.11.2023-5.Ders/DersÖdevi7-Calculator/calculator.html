@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Sample</title>
+    <style>
+        .num1,
+        .num2 {
+            margin: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 30px;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+            color: white;
+            font-size: 36px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="num1">
+        <label for="number1">Numara-1 :</label>
+        <input type="text" id="number1" placeholder="0"> <br>
+    </div>
+    <div class="num2">
+        <label for="number2">Numara-2 :</label>
+        <input type="text" id="number2" placeholder="0"> <br>
+    </div>
+    <h1>Sonuç : </h1>
+    <div class="buttons">
+        <button onclick="Topla()" class="button">Topla</button>
+        <button onclick="Çıkart()" class="button">Çıkart</button>
+        <button onclick="Çarp()" class="button">Çarp</button>
+        <button onclick="Böl()" class="button">Böl</button>
+        <button onclick="Karekök()" class="button">Karekök</button>
+    </div>
+    <script>
+        function Topla() {
+            var num1 = Number(document.getElementById("number1").value);
+            var num2 = Number(document.getElementById("number2").value);
+            let result = num1 + num2;
+            document.querySelector("h1").innerText = "Sonuç : " + result;
+        }
+        function Çıkart() {
+            var num1 = Number(document.getElementById("number1").value);
+            var num2 = Number(document.getElementById("number2").value);
+            let result = num1 - num2;
+            document.querySelector("h1").innerText = "Sonuç : " + result;
+        }
+        function Çarp() {
+            var num1 = Number(document.getElementById("number1").value);
+            var num2 = Number(document.getElementById("number2").value);
+            let result = num1 * num2;
+            document.querySelector("h1").innerText = "Sonuç : " + result;
+        }
+        function Böl() {
+            var num1 = Number(document.getElementById("number1").value);
+            var num2 = Number(document.getElementById("number2").value);
+            let result = num1 / num2;
+            let resultString = result.toString();
+            if (resultString.includes(".")) {
+                let noktaIndex = resultString.indexOf(".");
+                let küsüratSayı = resultString.substring(noktaIndex);
+                if (küsüratSayı.length > 5) {
+                    document.querySelector("h1").innerText = "Sonuç : " + result.toFixed(5);
+                }
+                else { document.querySelector("h1").innerText = "Sonuç : " + parseFloat(result) }
+            }
+            else { document.querySelector("h1").innerText = "Sonuç : " + result }
+        }
+        function Karekök() {
+            var num = parseFloat(document.getElementById("number1").value);
+            var karekok = Math.sqrt(num);
+            let karekokString = karekok.toString();
+            if (karekokString.includes(".")) {
+                let noktaIndex = karekokString.indexOf(".");
+                let küsüratSayı = karekokString.substring(noktaIndex);
+                if (karekokString.length > 5) {
+                    document.querySelector("h1").innerText = "Sonuç : " + karekok.toFixed(5);
+                }
+                else { docum.querySelector("h1").innerText = "Sonuç : " + parseFloat(karekok) }
+            }
+            else { document.querySelector("h1").innerText = "Sonuç : " + karekok }
+        }
+    </script>
+</body>
+
+</html>

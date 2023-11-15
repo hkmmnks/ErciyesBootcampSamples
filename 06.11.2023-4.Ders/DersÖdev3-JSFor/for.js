@@ -32,8 +32,8 @@ for (i = 2; i < 100; i++) {
 }
 console.log("4.Soru: Birden yüze kadarki sayılardan, 5’e bölünenleri ekrana yazdırın. Cevap = " + numbersDividedByFive)
 
-// Dizinin en büyük sayısıı for döngüsü ile bul
-// Dizinin en küçük sayısıı for döngüsü ile bul
+// Dizinin en büyük sayısını for döngüsü ile bul
+// Dizinin en küçük sayısını for döngüsü ile bul
 var numbers = [33, 11, -5, 20, 1, 55, 100, 2, 94, 55, 11]
 let minNumber = 0;
 let maxNumber = 0;

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horse Race</title>
+    <link rel="stylesheet" href="horseRace.css">
+</head>
+
+<body>
+    <div class="container">
+        <audio id="run" src="Sounds/run.mp3"></audio>
+        <audio id="finish" src="Sounds/finish.mp3"></audio>
+        <button class="button" onclick="start()">START</button>
+        <h1></h1>
+        <div class="horseImagesBox">
+            <div class="horse horse1">
+                <img src="Images/horse.gif" alt="">
+            </div>
+            <div class="horse horse2">
+                <img src="Images/horse.gif" alt="">
+            </div>
+            <div class="horse horse3">
+                <img src="Images/horse.gif" alt="">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="finishLine">
+        <script>
+            let interval;
+            let runSound = document.getElementById("run");
+            let finishSound = document.getElementById("finish");
+            let winner = document.querySelector("h1");
+            let buttonObject = document.querySelector("button");
+            function start() {
+                buttonObject.disabled = true;
+                buttonObject.innerText = "yarış devam ediyor..."
+                winner.innerText = "";
+                runSound.play();
+                finishSound.pause();
+                finishSound.currentTime = 0;
+                let horse1 = 0;
+                let horse2 = 0;
+                let horse3 = 0;
+                interval = setInterval(() => {
+                    horse1 += Math.floor(Math.random() * 40)
+                    horse2 += Math.floor(Math.random() * 40)
+                    horse3 += Math.floor(Math.random() * 40)
+
+                    document.querySelector('.horse1').style.marginLeft = horse1 + 'px';
+                    document.querySelector('.horse2').style.marginLeft = horse2 + 'px';
+                    document.querySelector('.horse3').style.marginLeft = horse3 + 'px';
+                    console.log(horse1, horse2, horse3);
+
+                    if (horse1 > 1000) {
+                        clearInterval(interval);
+                        runSound.pause();
+                        runSound.currentTime = 0;
+                        winner.innerText = "1. AT KAZANDI!"
+                        finishSound.play();
+                        resetHorsesPosition();
+                        buttonObject.disabled = false;
+                        buttonObject.innerText = "START";
+                    } else if (horse2 > 1000) {
+                        clearInterval(interval);
+                        runSound.pause();
+                        runSound.currentTime = 0;
+                        winner.innerText = "2. AT KAZANDI!"
+                        finishSound.play();
+                        resetHorsesPosition();
+                        buttonObject.disabled = false;
+                        buttonObject.innerText = "START";
+                    } else if (horse3 > 1000) {
+                        clearInterval(interval);
+                        runSound.pause();
+                        runSound.currentTime = 0;
+                        winner.innerText = "3. AT KAZANDI!"
+                        finishSound.play();
+                        resetHorsesPosition();
+                        buttonObject.disabled = false;
+                        buttonObject.innerText = "START";
+                    }
+                }, 500);
+            }
+
+            function resetHorsesPosition() {
+                document.querySelector('.horse1').style.marginLeft = 0 + 'px';
+                document.querySelector('.horse2').style.marginLeft = 0 + 'px';
+                document.querySelector('.horse3').style.marginLeft = 0 + 'px';
+            }
+        </script>
+</body>
+
+</html>
