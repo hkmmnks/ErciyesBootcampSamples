@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Sample Number</title>
+
+</head>
+
+<body>
+    <div>
+        <button style="width: 100px; height: 50px;" onclick="add()">Add
+
+        </button>
+    </div>
+    <div>
+        <ul>
+
+        </ul>
+    </div>
+</body>
+<script>
+    var numbers = [];
+    function add() {
+        if (numbers.length >= 15) {
+            alert("Maksimum limite ulaştınız!")
+            return;
+        }
+        var randomNumber = Math.ceil(Math.random() * 100)
+        if (!numbers.includes(randomNumber)) {
+            numbers.push(randomNumber);
+            var li = document.createElement("li");
+            li.innerText = randomNumber;
+            document.querySelector("ul").appendChild(li);
+        }
+    }
+
+</script>
+
+</html>

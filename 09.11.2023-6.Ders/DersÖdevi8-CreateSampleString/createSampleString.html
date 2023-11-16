@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Sample String</title>
+    <style>
+        #name {
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name"> <br>
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname">
+        </div>
+        <div>
+            <button onclick="add()">Add</button>
+        </div>
+        <div>
+            <ul>
+
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    function add() {
+        var name = document.getElementById("name").value;
+        var surname = document.getElementById("surname").value;
+        if (name.trim() == "" && surname.trim() == "") {
+            return;
+        }
+        var li = document.createElement("li");
+        var fullName = name + " " + surname;
+        li.innerText = fullName.toUpperCase();
+        document.querySelector("ul").appendChild(li);
+        document.getElementById("name").value = "";
+        document.getElementById("surname").value = "";
+    }
+</script>
+
+</html>
