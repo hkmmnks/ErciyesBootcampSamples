@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/tr.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/tr.min.js"></script> -->
 
 </head>
 
 <body>
+    <h2></h2>
     <ul id="list">
 
     </ul>
@@ -29549,21 +29550,23 @@
         }
     ]
 
+    let listOfOrders = []
     orders.forEach(item => {
         var date = new Date(item.orderDate);
-        var year = date.getFullYear();
-        var month = date.getMonth();
-        let filteredItems = moment(item.orderDate).diff(item.shippedDate, 'days');
-        if (year == 1996 && month == 11) {
-            var liElement = document.createElement("li");
-            liElement.innerHTML = item.customerId + " - " + moment(item.orderDate).format("D MMMM YYYY hh:mm A") + " " + moment(item.shippedDate).format("D MMMM YYYY hh:mm A") + " Fark: " + moment(item.orderDate).diff(item.shippedDate, 'days');
+        var orderYear = date.getFullYear();
+        var orderMonth = date.getMonth();
+        if (orderYear == 1996 && orderMonth == 11) {
+            var liElement = document.createElement("li")
+            liElement.innerText = "ID: " + item.customerId + " - " + "Order Date: " + moment(date).format('D MMMM YYYY, hh:mm A')
             document.getElementById("list").appendChild(liElement);
-            if (moment(item.orderDate().diff(item.shippedDate, 'days')) >= -10 || moment(item.orderDate().diff(item.shippedDate, 'days')) <= -5) {
-                item = filteredItems;
-                console.log(filteredItems)
+            listOfOrders.push(liElement);
+            let delayedOrder = moment(item.shippedDate).diff(item.requiredDate, 'days');
+            if (delayedOrder >= 5 && delayedOrder <= 10) {
+                console.log("Order ID: " + item.id + " " + "Delayed " + delayedOrder + " day");
             }
         }
-    });
+        document.querySelector("h2").innerText = "Total number of orders in December 1996: " + listOfOrders.length;
+    })
 
 
 
